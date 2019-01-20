@@ -13,21 +13,21 @@ The db.properties database configuration file is configured to work with MySQL d
 The prefix name determines what database is configured. In this file we have mysql., but you can add oracle. for instance. The code that will use the database must have besides this ShortenUrl JAR file also the database connector JAR file.
 In this configuration file it was created a database named shortenurldb with the user/password found inside this file. You can change at your wish.
 
-Two tables are needed:
-CREATE TABLE `domain` (
-  `domain` varchar(100) NOT NULL,
-  `domain_id` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`domain`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table will associatethe domain to an ID';
-
-CREATE TABLE `shortenurl` (
-  `domain_id` int(11) NOT NULL,
-  `shorturl` int(11) NOT NULL DEFAULT '1000',
-  `longurl` mediumtext NOT NULL,
-  `statistics` int(11) DEFAULT NULL,
-  KEY `domain_id_fk_idx` (`domain_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table with a domain ID and a Shorten URL associates to a Long URL';
-
+Two tables are needed:<br>
+CREATE TABLE `domain` (<br>
+  `domain` varchar(100) NOT NULL,<br>
+  `domain_id` int(11) NOT NULL DEFAULT '1',<br>
+  PRIMARY KEY (`domain`)<br>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table will associatethe domain to an ID';<br>
+<br>
+CREATE TABLE `shortenurl` (<br>
+  `domain_id` int(11) NOT NULL,<br>
+  `shorturl` int(11) NOT NULL DEFAULT '1000',<br>
+  `longurl` mediumtext NOT NULL,<br>
+  `statistics` int(11) DEFAULT NULL,<br>
+  KEY `domain_id_fk_idx` (`domain_id`)<br>
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table with a domain ID and a Shorten URL associates to a Long URL';<br>
+<br>
 Take a look at ShortenURL interface.
 Below a code that can be used to test this API:
 
