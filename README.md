@@ -30,7 +30,7 @@ CREATE TABLE `shortenurl` (<br>
 <br>
 Take a look at ShortenURL interface.
 Below a code that can be used to test this API:
-
+ `
 import java.sql.Connection;
 import java.sql.SQLException;
 
