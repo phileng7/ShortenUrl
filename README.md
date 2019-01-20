@@ -30,15 +30,15 @@ CREATE TABLE `shortenurl` (<br>
 <br>
 Take a look at ShortenURL interface.
 Below a code that can be used to test this API:
- `
-import java.sql.Connection;
-import java.sql.SQLException;
-
-import api.shortenurl.*;
-
-public class App {
-	Connection con;
-
+<br>
+`import java.sql.Connection;`<br>
+`import java.sql.SQLException;`<br>
+<br>
+`import api.shortenurl.*;`<br>
+<br>
+`public class App {`<br>
+	`Connection con;`<br>
+<br>
 	public static void main(String[] args) {
 		App app = new App();
 		app.createShortenUrls();
