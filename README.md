@@ -37,8 +37,8 @@ Below a code that can be used to test this API:
 `import api.shortenurl.*;`<br>
 <br>
 `public class App {`<br>
-	`Connection con;`<br>
-<br>
+	`Connection con;`<br><br>
+
 	public static void main(String[] args) {
 		App app = new App();
 		app.createShortenUrls();
