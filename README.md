@@ -13,6 +13,31 @@ The db.properties database configuration file is configured to work with MySQL d
 The prefix name determines what database is configured. In this file we have mysql., but you can add oracle. for instance. The code that will use the database must have besides this ShortenUrl JAR file also the database connector JAR file.
 In this configuration file it was created a database named shortenurldb with the user/password found inside this file. You can change at your wish.
 
+You can use the Docker to test the JAR API(ShortenUrlAPI.jar). Follow the steps (using Ubuntu):
+1) Install Docker on your machine
+2) Open Terminal
+sudo -i
+//Pull and run the image MySQL
+docker run --name mysql_db -p 3306:3306 78917/mysql:5.7
+//At the end close the Terminal.
+3) Open Terminal to load the Schema
+sudo -i
+docker exec -it mysql_db bash
+mysql -u shorturluser -pshorturl1234 shortenurldb < /tmp/shortenurl_data.sql
+exit
+4) Pull and run the image JAR
+docker run -t --name shortenurlmysql --link mysql_db:mysql -p 8080:8080 78917/shortenurl:jar
+//After installing and running you should receive the following result
+http://sht.ly/HCQ
+http://sht.ly/HCR
+http://sht.ly/HCS
+https://travel.usnews.com/Hotels/review-Rosewood_London-London-England-132234/
+Numero de acessos a http://sht.ly/HCR = 1		
+
+//the first three lines are long URL that were transformed into small ones, the fourth is a navigation using shor URL and receiving a long one, and the last line is the number of access for this short URL (see the testing code App below).
+
+Below is explained how to create manually the tables and how the Java test code(ShortenUrlAPITest.jar) uses the JAR API ShortenUrlAPI.jar, it also uses MySQL connector(mysql-connector-java-8.0.13.jar).
+
 Two tables are needed:<br>
 CREATE TABLE `domain` (<br>
   `domain` varchar(100) NOT NULL,<br>
@@ -29,6 +54,7 @@ CREATE TABLE `shortenurl` (<br>
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='This table with a domain ID and a Shorten URL associates to a Long URL';<br>
 <br>
 Take a look at ShortenURL interface.
+<br>
 Below a code that can be used to test this API:
 <br>
 `import java.sql.Connection;`<br>
