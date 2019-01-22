@@ -11,7 +11,7 @@ It was created in Java.
 
 The db.properties database configuration file is configured to work with MySQL database, but you can use other database.
 The prefix name determines what database is configured. In this file we have mysql., but you can add oracle. for instance. The code that will use the database must have besides this ShortenUrl JAR file also the database connector JAR file.
-In this configuration file it was created a database named shortenurldb with the user/password found inside this file. You can change at your wish.
+In this configuration file it was created a database named shortenurldb with the user/password found inside this file. You can change at your wish. The db.properties IP used for MySQL connection inside Docker is 172.17.0.2
 
 You can use the Docker to test the JAR API(ShortenUrlAPI.jar). Follow the steps (using Ubuntu):
 1) Install Docker on your machine
